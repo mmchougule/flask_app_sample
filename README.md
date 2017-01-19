@@ -14,9 +14,14 @@ Steps to run:
 flask run</li>
 </ul>
 
-Endpoints:
-1. Add companies information (POST) request:
-    curl -H "Content-Type: application/json" -X POST -d '{"company_name": "Microsoft", "address": "Redmond, WA", "revenue": "$299 Billion"}' http://localhost:5000/add_company
+# Endpoints:
 
-2. List companies data:
+<ul>
+<li>
+1. Add companies information (POST) request:<br/>
+    curl -H "Content-Type: application/json" -X POST -d '{"company_name": "Microsoft", "address": "Redmond, WA", "revenue": "$299 Billion"}' http://localhost:5000/add_company
+</li>
+<li>
+2. List companies data:<br/>
     http://localhost:5000/list_companies
+</li>
