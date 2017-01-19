@@ -25,3 +25,7 @@ flask run</li>
 2. List companies data:<br/>
     http://localhost:5000/list_companies
 </li>
+
+
+TODO:<br/>
+Add employee records and show them.
