@@ -65,6 +65,35 @@ def add_company():
         flash('Created a new company record')
     return '1'
 
+@app.route("/list_employees")
+def list_employees():
+    temp = query_db("select * from employee as e join company as c on c.company_id = e.company_id")
+    print(temp)
+    employees = []
+    for row in temp:
+        employee = {}
+        # Set this manually for now.
+        employee['employee_id'] = row[0]
+        employee['firstname'] = row[1]
+        employee['lastname'] = row[2]
+        employee['company_id'] = row[3]
+        employee['email'] = row[4]
+        employee['company_name'] = row[5]
+        employee['address'] = row[6]
+        employees.append(employee)
+    data = [{'success': 'true', 'total': len(employees), 'data': employees}]
+    return json.dumps(data)
+
+@app.route("/add_employee", methods=['POST'])
+def add_employee():
+    if request.json['email']:
+        db = get_db()
+        db.execute('''insert into employee (firstname, lastname, company_id, email)
+            values (?, ?, ?, ?)''', (request.json['firstname'], request.json['lastname'], request.json['company_id'], request.json['email']))
+        db.commit()
+        flash('Created a new employee record')
+    return '1'
+
 @app.route("/")
 def hello():
     return "Hello to you!"

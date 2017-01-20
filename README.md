@@ -25,7 +25,12 @@ flask run</li>
 2. List companies data:<br/>
     http://localhost:5000/list_companies
 </li>
-
-
-TODO:<br/>
-Add employee records and show them.
+<li>
+3. Add employee information (POST) request:<br/>
+    curl -H "Content-Type: application/json" -X POST -d '{"firstname": "Mayur", "lastname": "Chougule", "company_id": "1", "email": "test@example.com"}' http://localhost:5000/add_employee
+</li>
+<li>
+4. List employee data:<br/>
+    Shows employee with company information.<br/>
+    http://localhost:5000/list_employees
+</li>
